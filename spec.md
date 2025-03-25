@@ -3,7 +3,7 @@
 ## 1. Technical Stack
 - **Engine:** Godot
 - **Language:** Rust
-- **Architecture:** Entity Component System (ECS) recommended for managing numerous game entities and states
+- **Architecture:** Functional
 
 ## 2. Core Systems Architecture
 
