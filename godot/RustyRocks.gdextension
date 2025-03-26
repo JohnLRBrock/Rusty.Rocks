@@ -1,0 +1,14 @@
+[configuration]
+entry_sumbol = "gdext_rust_init"
+compatibility = 4.1
+reloadable = true
+
+[libraries]
+linux.debug.x86_64 =     "res://../rust/target/debug/librusty_rocks.so"
+linux.release.x86_64 =   "res://../rust/target/release/librusty_rocks.so"
+windows.debug.x86_64 =   "res://../rust/target/debug/librusty_rocks.dll"
+windows.release.x86_64 = "res://../rust/target/release/librusty_rocks.dll"
+macos.debug =            "res://../rust/target/debug/librusty_rocks.dylib"
+macos.release =          "res://../rust/target/release/librusty_rocks.dylib"
+macos.debug.arm64 =      "res://../rust/target/debug/librusty_rocks.dylib"
+macos.release.arm64 =    "res://../rust/target/release/librusty_rocks.dylib"
