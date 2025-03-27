@@ -1,9 +1,34 @@
 # Rock Influencer Idle Game - Technical Specification
 
-## 1. Technical Stack
-- **Engine:** Godot
-- **Language:** Rust
-- **Architecture:** Functional
+## 1. Technical Specifications
+
+### 1.1 Core Architecture
+- **Frontend Framework**: Leptos (Rust WASM)
+- **State Management**: Leptos store
+- **Build Pipeline**: Trunk with WASM optimization
+- **Styling**: Tailwind CSS + DaisyUI components
+
+### 1.2 Key Systems
+```rust
+// WASM-compatible game loop
+#[wasm_bindgen]
+pub struct GameEngine {
+    pub state: Rc<RefCell<GameState>>,
+    pub systems: Vec<Box<dyn System>>,
+}
+
+// Leptos component architecture
+pub enum Msg {
+    GameUpdate(GameUpdate),
+    UserInteraction(InteractionType),
+    ResourceLoaded(ResourceId),
+}
+```
+
+### 1.3 Performance Targets
+- WASM payload < 500KB gzipped
+- 60fps animation with canvas/webgl
+- Cold start < 1s on mid-tier devices
 
 ## 2. Core Systems Architecture
 

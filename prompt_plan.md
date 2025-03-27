@@ -1,17 +1,17 @@
 ## Phase 1 - Core Mechanics Foundation
-### Prompt 1: Godot Project Setup with Rust Bindings
-- Create new Godot project with GDNative Rust setup
-- Implement basic ECS skeleton:
+### Prompt 1: Leptos/Trunk Project Setup
+- Create new Leptos project with Trunk setup
+- Implement basic game logic skeleton:
   * Entity registry
   * Component storage
   * System scheduler
-- Add CI pipeline for Rust/Godot compatibility
-- Test case: Verify empty project launches with Rust bindings
+- Add CI pipeline for Rust/WASM compatibility
+- Test case: Verify empty project launches with Leptos bindings
 
 #### Test Cases
 1. Fresh project runs without Rust errors
 2. ECS registry can store/retrieve components
-3. Basic Godot-Rust signal passing works
+3. Basic Leptos-Rust signal passing works
 
 ### Prompt 2: Resource System Implementation
 - Create ResourceManager singleton
@@ -126,3 +126,41 @@
 1. Round-trip save/load preserves state
 2. Invalid saves trigger recovery
 3. Version mismatch handled safely
+
+## Tech Stack
+- **Frontend**: Leptos (Rust/WASM framework)
+- **Build System**: Trunk (Rust WASM pipeline)
+- **UI**: Modern web components with DaisyUI/Tailwind
+- **State Management**: Leptos for global state
+- **Animation**: Rust WASM-powered particle effects
+- **Audio**: WebAudio API integration
+
+## Project Structure
+```
+frontend/
+  src/
+    components/     # Leptos components
+    systems/        # Game systems
+    utils/          # Helper functions
+  index.html        # Trunk entry point
+  Cargo.toml
+
+common/
+  src/lib.rs       # Shared game logic
+
+```
+
+## Key Dependencies
+```toml
+[dependencies]
+# Frontend
+leptos = "0.5"
+leptos_reactive = "0.5"
+gloo = "0.9"
+
+# Game logic
+rand = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+
+# Build
+trunk = "0.17"

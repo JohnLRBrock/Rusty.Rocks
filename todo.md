@@ -2,31 +2,31 @@
 
 ## Phase 1 - Core Mechanics
 ### Project Setup
-- [ ] Godot 4 project with Rust bindings
-  - [ ] GDNative Rust configuration
-  - [ ] CI pipeline (GitHub Actions)
-  - [ ] ECS skeleton implementation
-  - [ ] Basic scene setup
+- [ ] Leptos/Trunk project
+  - [ ] Trunk.toml configuration
+  - [ ] Deploy to GitHub Pages
+  - [ ] Component architecture skeleton
+  - [ ] Basic page layout and routing
 
 ### Resource System
 - [ ] `GameResources` struct implementation
-  - [ ] Atomic float operations
-  - [ ] Serialization boilerplate
+  - [ ] WASM-compatible state management
+  - [ ] Serialization for localStorage
 - [ ] `ResourceMultipliers` system
-  - [ ] Thread-safe accessors
+  - [ ] Leptos store integration
   - [ ] Multiplier application logic
 - [ ] Unit tests:
   - [ ] Default values initialization
-  - [ ] Cross-thread safety verification
+  - [ ] Browser storage persistence
   - [ ] Overflow protection
 
 ### Click Mechanics
 - [ ] Rock generation system
   - [ ] Attribute randomization (size/quality/luster)
-  - [ ] Inventory management skeleton
+  - [ ] Browser-based inventory management
 - [ ] Click cooldown system
   - [ ] Progressive cooldown scaling
-  - [ ] Visual feedback implementation
+  - [ ] CSS/SVG visual feedback
 - [ ] Integration tests:
   - [ ] Click->Resource flow validation
   - [ ] Inventory capacity limits
