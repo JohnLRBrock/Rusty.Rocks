@@ -1,111 +1,70 @@
-# Rock Influencer Idle Game - Development Checklist
-
-## Phase 1 - Core Mechanics
+## Phase 0 - Core Mechanics Foundation
 ### Project Setup
 - [ ] Leptos/Trunk project
   - [ ] Trunk.toml configuration
   - [ ] Deploy to GitHub Pages
-  - [ ] Component architecture skeleton
-  - [ ] Basic page layout and routing
 
-### Resource System
-- [ ] `GameResources` struct implementation
-  - [ ] WASM-compatible state management
-  - [ ] Serialization for localStorage
-- [ ] `ResourceMultipliers` system
-  - [ ] Leptos store integration
-  - [ ] Multiplier application logic
-- [ ] Unit tests:
-  - [ ] Default values initialization
-  - [ ] Browser storage persistence
-  - [ ] Overflow protection
-
-### Click Mechanics
-- [ ] Rock generation system
-  - [ ] Attribute randomization (size/quality/luster)
-  - [ ] Browser-based inventory management
-- [ ] Click cooldown system
-  - [ ] Progressive cooldown scaling
-  - [ ] CSS/SVG visual feedback
-- [ ] Integration tests:
-  - [ ] Click->Resource flow validation
-  - [ ] Inventory capacity limits
-
-### Initial Upgrades
-- [ ] SocialMediaUpgrade struct
-  - [ ] Cost scaling formula (4.2^x)
-  - [ ] Purchase validation logic
-- [ ] GeodeCities implementation
-  - [ ] Base viral chance
-  - [ ] Follower growth curve
-- [ ] Tests:
-  - [ ] Upgrade cost progression
-  - [ ] Purchase denial on insufficient funds
-
-### Base UI
+### Base UI Framework
 - [ ] Main game scene
   - [ ] Resource display panel
-  - [ ] Click target button
-  - [ ] Upgrade menu skeleton
-- [ ] Data binding system
-  - [ ] Real-time resource updates
-  - [ ] Upgrade availability indicators
-- [ ] UI tests:
-  - [ ] Layout responsiveness
-  - [ ] Input validation
+  - [ ] Implement Map
+  - [ ] Clickable Rock target
 
-## Phase 2 - Progression Systems
-### Platform System
-- [ ] Platform unlock requirements
-- [ ] Platform-specific viral mechanics
-- [ ] Cross-platform progression tracking
+### Rock Generation System
+- [ ] Create RockFactory that generates rocks with random attributes
+  - [ ] Mineral types
+  - [ ] Attribute randomization (size/quality/luster/impurities)
+  - [ ] Browser-based inventory management
+- [ ] Inventory capacity limits
 
-### Viral System
-- [ ] Viral type implementations
-- [ ] Cooldown management
-- [ ] Mega-viral requirements
+## Phase 1 - Automation
 
-## Phase 3 - Advanced Systems
-### Heat System
-- [ ] Infamy conversion logic
-- [ ] Logarithmic bonus calculations
-- [ ] Prestige UI integration
-
-### Automation
-- [ ] Timed generation system
-- [ ] Upgrade scaling models
-- [ ] Background task manager
-
-## Phase 4 - Polish
-### Optimization
-- [ ] Memory usage profiling
-- [ ] Calculation caching system
-- [ ] BigNumber implementation
+### Time System
+- [ ] Game time delta system
+- [ ] Game event scheduler
 
 ### Save System
 - [ ] JSON serialization
 - [ ] Versioned save format
 - [ ] Auto-save triggers
+- [ ] Load validation
 
-## Ancillary Systems
-- [ ] Error handling framework
-- [ ] Analytics tracking
-- [ ] Localization setup
-- [ ] Accessibility features
-  - [ ] Colorblind mode
-  - [ ] UI scaling
+### Initial Upgrade System
+- [ ] Implement automated clout and rock upgrades
 
-## Documentation
-- [ ] Technical design doc
-- [ ] Player-facing tutorial
-- [ ] Modding API skeleton
+## Phase 2 - Core Gameplay
 
-## Infrastructure
-- [ ] Build pipeline
-- [ ] Crash reporting
-- [ ] Update distribution system
+### Location System
+- [ ] Implement other locations
+  - [ ] Fill out map
+  - [ ] Add requirements for each location
+  - [ ] Add location specific events
+  - [ ] Location-specific rock distributions
 
-## Asset Management
-- [ ] Rock texture atlas
-- [ ] UI sound effects
-- [ ] Achievement icons
+## Phase 3 - Social Media
+
+### Social Media Skeleton
+- [ ] Create GeodeCities Page
+- [ ] Add ability to post on GeodeCities
+- [ ] Add email system
+- [ ] Add GeodeCities upgrades
+
+### Viral Mechanics Core
+- [ ] Implement ViralPost struct
+- [ ] Create viral chance calculator
+- [ ] Add cooldown mechanic
+- [ ] Add mega-viral mechanic
+
+## Phase 4 - Heat and Infamy
+
+### Infamy System
+- [ ] Add Infamy mechanic
+- [ ] Add Infamy raising events
+- [ ] Add effect of Infamy to other systems
+- [ ] PR Manager implementation
+
+### Heat System
+- [ ] Add Heat mechanic
+- [ ] Add effect of heat to other systems
+- [ ] Create prestige UI skeleton
+- [ ] Create prestige system
