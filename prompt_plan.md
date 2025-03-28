@@ -51,6 +51,10 @@
 - Add cooldown mechanic
 - Add mega-viral mechanic
 
+### Add monetization
+- Add monetization system
+- Add upgrades that cost money
+
 ### Heat and Infamy
 
 ### Add Infamy

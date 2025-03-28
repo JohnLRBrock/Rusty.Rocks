@@ -55,6 +55,10 @@
 - [ ] Add cooldown mechanic
 - [ ] Add mega-viral mechanic
 
+### Add monetization
+- [ ] Add monetization system
+- [ ] Add upgrades that cost money
+
 ## Phase 4 - Heat and Infamy
 
 ### Infamy System
