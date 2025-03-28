@@ -6,49 +6,7 @@
 - **Frontend Framework**: Leptos (Rust WASM)
 - **State Management**: Leptos store
 - **Build Pipeline**: Trunk with WASM optimization
-- **Styling**: Tailwind CSS + DaisyUI components
-
-### 1.2 Key Systems
-```rust
-// WASM-compatible game loop
-#[wasm_bindgen]
-pub struct GameEngine {
-    pub state: Rc<RefCell<GameState>>,
-    pub systems: Vec<Box<dyn System>>,
-}
-
-// Leptos component architecture
-pub enum Msg {
-    GameUpdate(GameUpdate),
-    UserInteraction(InteractionType),
-    ResourceLoaded(ResourceId),
-}
-```
-
-### 1.3 Performance Targets
-- WASM payload < 500KB gzipped
-- 60fps animation with canvas/webgl
-- Cold start < 1s on mid-tier devices
-
-## 2. Core Systems Architecture
-
-### 2.1 Resource Management
-```rust
-struct GameResources {
-    clout: f64,
-    followers: f64,
-    infamy: f64,
-    heat: i32,
-    money: f64
-}
-
-struct ResourceMultipliers {
-    viral_chance: f64,
-    mega_viral_chance: f64,
-    clout_gain: f64,
-    follower_gain: f64
-}
-```
+- **Styling**: Custom CSS/SVG
 
 ### 2.2 Social Media Platform System
 ```rust
@@ -78,22 +36,6 @@ struct PlatformStats {
 - Random rock generation on click
 - Inventory management system
 - Click cooldown management
-
-### 3.2 Viral System
-```rust
-struct ViralPost {
-    platform: Platform,
-    viral_type: ViralType,
-    cooldown: Duration,
-    spread_platforms: Vec<Platform>,
-    rewards: ResourceRewards
-}
-
-enum ViralType {
-    Normal,
-    Mega
-}
-```
 
 ## 4. Progression Systems
 
