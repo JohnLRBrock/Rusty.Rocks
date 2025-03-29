@@ -1,6 +1,6 @@
 ## Phase 0 - Core Mechanics Foundation
 ### Project Setup
-- [ ] Leptos/Trunk project
+- [x] Leptos/Trunk project
   - [ ] Trunk.toml configuration
   - [ ] Deploy to GitHub Pages
 
