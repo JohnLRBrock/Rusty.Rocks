@@ -1,8 +1,7 @@
 ## Phase 0 - Core Mechanics Foundation
 ### Project Setup
 - [x] Leptos/Trunk project
-  - [ ] Trunk.toml configuration
-  - [ ] Deploy to GitHub Pages
+  - [x] Deploy to GitHub Pages
 
 ### Base UI Framework
 - [ ] Main game scene
