@@ -7,7 +7,7 @@ fn main() {
     mount_to_body(|| view! {
         <div class="app-container">
             <Rock/>
-            {Counter(10, 1)}
+            {Counter()}
         </div>
     })
 }
