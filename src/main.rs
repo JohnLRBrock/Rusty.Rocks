@@ -1,5 +1,13 @@
 use leptos::prelude::*;
+mod components;
+use components::Rock;
+use components::Counter;
 
 fn main() {
-    leptos::mount::mount_to_body(|| view! { <p>"Hello, sworld!"</p> })
+    mount_to_body(|| view! {
+        <div class="app-container">
+            <Rock/>
+            {Counter(10, 1)}
+        </div>
+    })
 }
