@@ -1,11 +1,18 @@
 use leptos::prelude::*;
+use reactive_stores::Store;
+use crate::app::GameState;
 
 #[component]
 pub fn Rock() -> impl IntoView {
-    let (click_count, set_click_count) = signal(0);
+    let store = use_context::<Store<GameState>>()
+        .expect("Store should be provided by App component");
     
     let on_click = move |_| {
-        set_click_count.update(|count| *count += 1);
+        store.update(|state| {
+            if state.rock_count < state.inventory_size {
+                state.rock_count += 1;
+            }
+        });
     };
 
     view! {
@@ -16,9 +23,6 @@ pub fn Rock() -> impl IntoView {
             >
                 Collect Rock
             </button>
-            <div class="click-count">
-                "Clicks: " {click_count}
-            </div>
         </div>
     }
 } 
