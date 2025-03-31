@@ -20,8 +20,6 @@ pub fn App(children: Children) -> impl IntoView {
     provide_context(store);
 
     view! {
-        <div class="app">
-            {children()}
-        </div>
+        {children()}
     }
 }
