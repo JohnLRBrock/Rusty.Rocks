@@ -19,11 +19,6 @@ pub fn Inventory(children: Children) -> impl IntoView {
                 {move || {
                     let state = store.get();
                     let remaining = state.inventory_size - state.rock_count;
-                    if remaining <= 0 {
-                        "Inventory Full!".to_string()
-                    } else {
-                        format!("Space for {} more rocks", remaining)
-                    }
                 }}
             </div>
             {children()}
