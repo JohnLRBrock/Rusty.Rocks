@@ -1,3 +1,4 @@
 pub mod rock;
 pub mod inventory;
 pub mod map;
+pub mod rock_eater;
