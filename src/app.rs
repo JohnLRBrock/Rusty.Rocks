@@ -1,9 +1,6 @@
 use leptos::prelude::*;
 use reactive_stores::Store;
-use crate::components::rock::Rock;
 use crate::components::inventory::Inventory;
-use crate::components::map::Map;
-use crate::components::rock_eater::RockEater;
 use crate::components::clout::Clout;
 
 #[derive(Clone)]
@@ -29,6 +26,5 @@ pub fn App() -> impl IntoView {
     view! {
         <Clout/>
         <Inventory/>
-        <Map/>
     }
 }

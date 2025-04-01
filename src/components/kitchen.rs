@@ -1,7 +1,7 @@
 use leptos::prelude::*;
 
 #[component]
-pub fn Map() -> impl IntoView {
+pub fn KitchenIcon() -> impl IntoView {
     view! {
         Kitchen
     }
