@@ -1,9 +1,11 @@
 use leptos::prelude::*;
 use reactive_stores::Store;
 use crate::app::GameState;
+use crate::components::rock::Rock;
+use crate::components::rock_eater::RockEater;
 
 #[component]
-pub fn Inventory(children: Children) -> impl IntoView {
+pub fn Inventory() -> impl IntoView {
     let store = use_context::<Store<GameState>>()
         .expect("Store should be provided by App component");
 
@@ -15,13 +17,8 @@ pub fn Inventory(children: Children) -> impl IntoView {
                     format!("Rocks: {} / {}", state.rock_count, state.inventory_size)
                 }}
             </div>
-            <div class="inventory-status">
-                {move || {
-                    let state = store.get();
-                    let remaining = state.inventory_size - state.rock_count;
-                }}
-            </div>
-            {children()}
+            <Rock/>
+            <RockEater/>
         </div>
     }
 }

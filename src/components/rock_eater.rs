@@ -11,6 +11,7 @@ pub fn RockEater() -> impl IntoView {
         store.update(|state| {
             if state.rock_count > 0 {
                 state.rock_count -= 1;
+                state.clout += 1;
             }
         });
     };
