@@ -4,17 +4,26 @@
   - [x] Deploy to GitHub Pages
 
 ### Base UI Framework
-- [ ] Main game scene
-  - [ ] Resource display panel
-  - [ ] Implement Map
-  - [ ] Clickable Rock target
+- [x] Main game scene
+  - [x] Resource display panel
+  - [x] Implement Map
+  - [x] Clickable Rock target
 
 ### Rock Generation System
 - [ ] Create RockFactory that generates rocks with random attributes
-  - [ ] Mineral types
-  - [ ] Attribute randomization (size/quality/luster/impurities)
-  - [ ] Browser-based inventory management
-- [ ] Inventory capacity limits
+  - [x] Define basic mineral types and attributes
+    - [x] Create mineral type enums
+    - [x] Implement attribute structs
+  - [x] Implement RockFactory core
+    - [x] Random attribute generation
+    - [x] Quality calculations
+    - [x] Factory configuration
+  - [x] Integrate with GameState
+    - [x] Add rock inventory
+    - [x] Implement capacity system
+  - [x] Update UI components
+    - [x] Display rock attributes
+- [x] Inventory capacity limits
 
 ## Phase 1 - Automation
 

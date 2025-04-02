@@ -6,3 +6,5 @@ edition = "2024"
 [dependencies]
 leptos = { version = "0.7.8", features = ["csr"] }
 reactive_stores = "0.1.8"
+rand = "0.8.5"
+getrandom = { version = "0.2", features = ["js"] }

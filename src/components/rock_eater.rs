@@ -9,9 +9,10 @@ pub fn RockEater() -> impl IntoView {
 
     let on_click = move |_| {   
         store.update(|state| {
-            if state.rock_count > 0 {
-                state.rock_count -= 1;
-                state.clout += 1;
+            if !state.rocks.is_empty() {
+                if let Some(rock) = state.rocks.pop() {
+                    state.clout += rock.value as i32;
+                }
             }
         });
     };
