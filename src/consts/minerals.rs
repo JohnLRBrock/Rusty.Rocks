@@ -1,9 +1,18 @@
+use strum_macros::EnumIter;
+
+#[derive(Debug, Clone, PartialEq, EnumIter)]
+pub enum RockType {
+    Sedimentary,
+    Igneous,
+    Metamorphic,
+}
+
 pub const MIN_MOHS_HARDNESS: f32 = 1.0;
 pub const MAX_MOHS_HARDNESS: f32 = 10.0;
 pub const MIN_SPECIFIC_GRAVITY: f32 = 2.0;
 pub const MAX_SPECIFIC_GRAVITY: f32 = 7.0;
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, EnumIter)]
 pub enum LusterType {
     Adamantine,
     Dull,
@@ -17,7 +26,7 @@ pub enum LusterType {
     Waxy,
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, EnumIter)]
 pub enum Colors {
     Black,
     Blue,
@@ -35,14 +44,14 @@ pub enum Colors {
     Violet,
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, EnumIter)]
 pub enum Transparency {
     Opaque,
     Transparent,
     Translucent,
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, EnumIter)]
 pub enum Cleavage {
     Basal,
     Prismatic,
@@ -52,7 +61,7 @@ pub enum Cleavage {
     Dodecahedral,
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, EnumIter)]
 pub enum OpticalPhenomena {
     Asterism,
     Chatoyance,

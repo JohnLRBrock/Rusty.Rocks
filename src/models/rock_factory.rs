@@ -1,14 +1,10 @@
-use crate::consts::minerals::{LusterType, Colors, Transparency, Cleavage, OpticalPhenomena};
+use crate::consts::minerals::{LusterType, Colors, Transparency, Cleavage, OpticalPhenomena, RockType};
 use crate::consts::minerals::{MIN_SPECIFIC_GRAVITY, MAX_SPECIFIC_GRAVITY, MIN_MOHS_HARDNESS, MAX_MOHS_HARDNESS};
 use rand::Rng;
-use rand::seq::SliceRandom;
-
-#[derive(Debug, Clone, PartialEq)]
-pub enum RockType {
-    Sedimentary,
-    Igneous,
-    Metamorphic,
-}
+use rand::seq::IteratorRandom;
+use rand::SeedableRng;
+use rand::rngs::StdRng;
+use strum::IntoEnumIterator;
 
 #[derive(Debug, Clone)]
 pub struct Rock {
@@ -27,13 +23,19 @@ pub struct Rock {
 }
 
 pub struct RockFactory {
-    rng: rand::rngs::ThreadRng,
+    rng: Box<dyn rand::RngCore>,
 }
 
 impl RockFactory {
     pub fn new() -> Self {
         Self {
-            rng: rand::thread_rng(),
+            rng: Box::new(rand::thread_rng()),
+        }
+    }
+
+    pub fn with_seed(seed: u64) -> Self {
+        Self {
+            rng: Box::new(StdRng::seed_from_u64(seed)),
         }
     }
 
@@ -70,56 +72,24 @@ impl RockFactory {
     }
 
     fn random_rock_type(&mut self) -> RockType {
-        let types = [RockType::Sedimentary, RockType::Igneous, RockType::Metamorphic];
-        types.choose(&mut self.rng).unwrap().clone()
+        RockType::iter().choose(&mut *self.rng).unwrap()
     }
 
     fn random_luster(&mut self) -> LusterType {
-        let lusters = [
-            LusterType::Adamantine,
-            LusterType::Dull,
-            LusterType::Greasy,
-            LusterType::Metallic,
-            LusterType::Pearly,
-            LusterType::Resinous,
-            LusterType::Silky,
-            LusterType::Submetallic,
-            LusterType::Vitreous,
-            LusterType::Waxy,
-        ];
-        lusters.choose(&mut self.rng).unwrap().clone()
+        LusterType::iter().choose(&mut *self.rng).unwrap()
     }
 
     fn random_color(&mut self) -> Colors {
-        let colors = [
-            Colors::Black, Colors::Blue, Colors::Brown, Colors::Green,
-            Colors::Red, Colors::White, Colors::Yellow, Colors::Orange,
-            Colors::Purple, Colors::Pink, Colors::Gray, Colors::Gold,
-            Colors::Silver, Colors::Violet
-        ];
-        colors.choose(&mut self.rng).unwrap().clone()
+        Colors::iter().choose(&mut *self.rng).unwrap()
     }
 
     fn random_transparency(&mut self) -> Transparency {
-        let transparencies = [
-            Transparency::Opaque,
-            Transparency::Transparent,
-            Transparency::Translucent,
-        ];
-        transparencies.choose(&mut self.rng).unwrap().clone()
+        Transparency::iter().choose(&mut *self.rng).unwrap()
     }
 
     fn random_cleavage(&mut self) -> Option<Cleavage> {
         if self.rng.gen_bool(0.7) {  // 70% chance to have cleavage
-            let cleavages = [
-                Cleavage::Basal,
-                Cleavage::Prismatic,
-                Cleavage::Cubic,
-                Cleavage::Rhombohedral,
-                Cleavage::Octahedral,
-                Cleavage::Dodecahedral,
-            ];
-            Some(cleavages.choose(&mut self.rng).unwrap().clone())
+            Some(Cleavage::iter().choose(&mut *self.rng).unwrap())
         } else {
             None
         }
@@ -127,20 +97,13 @@ impl RockFactory {
 
     fn random_optical_phenomena(&mut self) -> Option<OpticalPhenomena> {
         if self.rng.gen_bool(0.3) {  // 30% chance to have optical phenomena
-            let phenomena = [
-                OpticalPhenomena::Asterism,
-                OpticalPhenomena::Chatoyance,
-                OpticalPhenomena::ColorChange,
-                OpticalPhenomena::Iridescence,
-                OpticalPhenomena::Schiller,
-            ];
-            Some(phenomena.choose(&mut self.rng).unwrap().clone())
+            Some(OpticalPhenomena::iter().choose(&mut *self.rng).unwrap())
         } else {
             None
         }
     }
 
-    fn calculate_value(&self, rock: &Rock) -> f32 {
+    pub fn calculate_value(&self, rock: &Rock) -> f32 {
         let base_value = 10.0;
 
         let quality_multiplier = 1.0 + rock.quality;
@@ -151,45 +114,5 @@ impl RockFactory {
 
         base_value * quality_multiplier * size_multiplier * (1.0 + hardness_bonus) 
             * phenomena_bonus * impurity_penalty
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_rock_generation() {
-        let mut factory = RockFactory::new();
-        let rock = factory.generate_rock();
-
-        assert!(rock.size >= 0.1 && rock.size <= 10.0);
-        assert!(rock.quality >= 0.0 && rock.quality <= 1.0);
-        assert!(rock.hardness >= MIN_MOHS_HARDNESS && rock.hardness <= MAX_MOHS_HARDNESS);
-        assert!(rock.specific_gravity >= MIN_SPECIFIC_GRAVITY && rock.specific_gravity <= MAX_SPECIFIC_GRAVITY);
-        assert!(rock.impurities >= 0.0 && rock.impurities <= 1.0);
-        assert!(rock.value > 0.0);
-    }
-
-    #[test]
-    fn test_value_calculation() {
-        let factory = RockFactory::new();
-        let rock = Rock {
-            rock_type: RockType::Igneous,
-            size: 1.0,
-            quality: 1.0,
-            lusters: LusterType::Vitreous,
-            color: Colors::Purple,
-            transparency: Transparency::Transparent,
-            cleavage: Some(Cleavage::Rhombohedral),
-            hardness: MAX_MOHS_HARDNESS,
-            specific_gravity: (MIN_SPECIFIC_GRAVITY + MAX_SPECIFIC_GRAVITY) / 2.0,
-            optical_phenomena: Some(OpticalPhenomena::Asterism),
-            impurities: 0.0,
-            value: 0.0,
-        };
-
-        let value = factory.calculate_value(&rock);
-        assert!(value > 10.0); // Base value should be increased by perfect attributes
     }
 }

@@ -8,3 +8,5 @@ leptos = { version = "0.7.8", features = ["csr"] }
 reactive_stores = "0.1.8"
 rand = "0.8.5"
 getrandom = { version = "0.2", features = ["js"] }
+strum = "0.27.1"
+strum_macros = "0.27.1"
