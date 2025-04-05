@@ -1,0 +1,7 @@
+---
+description: Testing style
+globs: 
+---
+Unit tests test for basic functionality of our tests. They should be small and are good for checking for corner cases. We keep them in the file of the code we're testing
+
+Integration tests have a larger scope and test things like making sure all the code works together. They'll be testing our public interface. Integration tests are stored in the /tests folder

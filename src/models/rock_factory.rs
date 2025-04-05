@@ -116,3 +116,30 @@ impl RockFactory {
             * phenomena_bonus * impurity_penalty
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_rock_generation_with_seed() {
+        let mut factory1 = RockFactory::with_seed(42);
+        let mut factory2 = RockFactory::with_seed(42);
+        
+        let rock1 = factory1.generate_rock();
+        let rock2 = factory2.generate_rock();
+        
+        assert_eq!(rock1.rock_type, rock2.rock_type);
+        assert_eq!(rock1.size, rock2.size);
+        assert_eq!(rock1.quality, rock2.quality);
+        assert_eq!(rock1.lusters, rock2.lusters);
+        assert_eq!(rock1.color, rock2.color);
+        assert_eq!(rock1.transparency, rock2.transparency);
+        assert_eq!(rock1.cleavage, rock2.cleavage);
+        assert_eq!(rock1.hardness, rock2.hardness);
+        assert_eq!(rock1.specific_gravity, rock2.specific_gravity);
+        assert_eq!(rock1.optical_phenomena, rock2.optical_phenomena);
+        assert_eq!(rock1.impurities, rock2.impurities);
+        assert_eq!(rock1.value, rock2.value);
+    }
+}

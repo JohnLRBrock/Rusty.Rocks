@@ -1,0 +1,10 @@
+---
+description: Declaring new file modules
+globs: 
+---
+
+# Your rule content
+
+DO NOT USE mod.rs FILES!!!
+
+When declaring new modules use the style in [components.rs](mdc:src/components.rs): a file at the same level as the folder we want to declare named after that folder. That way we don't have a bunch of files named mod.rs hanging around
